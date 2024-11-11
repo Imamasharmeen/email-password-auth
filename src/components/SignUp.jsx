@@ -18,7 +18,10 @@ export default function SignUp() {
             setErrorMessage('it should be al least 6')
             return
         }
-        
+        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/; 
+        if(!passwordRegex.test(password)){
+            setErrorMessage('fix the password')
+        }
         createUserWithEmailAndPassword(auth, email, password)
         .then((result)=>{
             console.log(result.user);
